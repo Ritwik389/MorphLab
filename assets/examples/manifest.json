@@ -1,0 +1,78 @@
+{
+  "pairs": [
+    {
+      "id": "collins-hopper",
+      "name": "Eileen \u2192 Grace",
+      "source": "/examples/source.png",
+      "target": "/examples/target.jpg",
+      "description": "Original sample pair"
+    },
+    {
+      "id": "ride-johnson",
+      "name": "Sally \u2192 Katherine",
+      "source": "/examples/sally.jpg",
+      "target": "/examples/katherine.jpg",
+      "description": "Color source and monochrome target"
+    },
+    {
+      "id": "johnson-ride",
+      "name": "Katherine \u2192 Sally",
+      "source": "/examples/katherine.jpg",
+      "target": "/examples/sally.jpg",
+      "description": "Monochrome source and color target"
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "Text only",
+      "url": "/examples/text-only.png",
+      "expected": "No face; show a helpful message."
+    },
+    {
+      "name": "Scene without faces",
+      "url": "/examples/no-face.png",
+      "expected": "No face; show a helpful message."
+    },
+    {
+      "name": "Rotated portrait",
+      "url": "/examples/rotated.jpg",
+      "expected": "Detect and align the tilted face."
+    },
+    {
+      "name": "Blurred portrait",
+      "url": "/examples/blurred.jpg",
+      "expected": "Reduced detail; inspect output quality."
+    },
+    {
+      "name": "Two faces",
+      "url": "/examples/multiple-faces.jpg",
+      "expected": "Reject ambiguous source; target supports all-face editing."
+    }
+  ],
+  "credits": [
+    {
+      "name": "Eileen Collins",
+      "creator": "NASA, via scikit-image astronaut sample",
+      "license": "Public domain",
+      "url": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.astronaut"
+    },
+    {
+      "name": "Grace Hopper",
+      "creator": "US Navy",
+      "license": "Public domain",
+      "url": "https://matplotlib.org/stable/gallery/cbook/image_demo.html"
+    },
+    {
+      "name": "Sally Ride, 1979",
+      "creator": "NASA / Glenn Research Center",
+      "license": "Public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Sally_Ride_1979.jpg"
+    },
+    {
+      "name": "Katherine Johnson, 1966 (original)",
+      "creator": "NASA",
+      "license": "Public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Katherine_Johnson_at_NASA,_in_1966_-_Original.jpg"
+    }
+  ]
+}

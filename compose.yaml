@@ -1,0 +1,11 @@
+services:
+  morphlab:
+    build: .
+    ports:
+      - "127.0.0.1:7860:7860"
+    init: true
+    restart: unless-stopped
+    environment:
+      AIMS_EXECUTION_PROVIDER: cpu
+    mem_limit: 4g
+    cpus: 2

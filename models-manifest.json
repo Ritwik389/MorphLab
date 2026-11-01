@@ -1,0 +1,55 @@
+{
+  "repository": "hacksider/deep-live-cam",
+  "revision": "581e70b61240b7928404c17900437f47cfe94133",
+  "models": [
+    {
+      "path": "inswapper_128.onnx",
+      "url": "https://huggingface.co/hacksider/deep-live-cam/resolve/581e70b61240b7928404c17900437f47cfe94133/inswapper_128.onnx",
+      "sha256": "e4a3f08c753cb72d04e10aa0f7dbe3deebbf39567d4ead6dce08e98aa49e16af",
+      "bytes": 554253681
+    },
+    {
+      "path": "insightface/models/buffalo_l/2d106det.onnx",
+      "url": "https://huggingface.co/hacksider/deep-live-cam/resolve/581e70b61240b7928404c17900437f47cfe94133/buffalo_l/buffalo_l/2d106det.onnx",
+      "sha256": "f001b856447c413801ef5c42091ed0cd516fcd21f2d6b79635b1e733a7109dbf",
+      "bytes": 5030888
+    },
+    {
+      "path": "insightface/models/buffalo_l/det_10g.onnx",
+      "url": "https://huggingface.co/hacksider/deep-live-cam/resolve/581e70b61240b7928404c17900437f47cfe94133/buffalo_l/buffalo_l/det_10g.onnx",
+      "sha256": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+      "bytes": 16923827
+    },
+    {
+      "path": "insightface/models/buffalo_l/w600k_r50.onnx",
+      "url": "https://huggingface.co/hacksider/deep-live-cam/resolve/581e70b61240b7928404c17900437f47cfe94133/buffalo_l/buffalo_l/w600k_r50.onnx",
+      "sha256": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+      "bytes": 174383860
+    },
+    {
+      "path": "insightface/models/buffalo_sc/det_500m.onnx",
+      "url": "https://huggingface.co/WePrompt/buffalo_sc/resolve/229b65be0dc7f8f33b55478772e8d3289580c356/det_500m.onnx",
+      "sha256": "5e4447f50245bbd7966bd6c0fa52938c61474a04ec7def48753668a9d8b4ea3a",
+      "bytes": 2524817,
+      "purpose": "Lightweight live detection/association; research-only InsightFace weights",
+      "author_source": "https://github.com/deepinsight/insightface/tree/master/model_zoo"
+    },
+    {
+      "path": "insightface/models/buffalo_sc/w600k_mbf.onnx",
+      "url": "https://huggingface.co/WePrompt/buffalo_sc/resolve/229b65be0dc7f8f33b55478772e8d3289580c356/w600k_mbf.onnx",
+      "sha256": "9cc6e4a75f0e2bf0b1aed94578f144d15175f357bdc05e815e5c4a02b319eb4f",
+      "bytes": 13616099,
+      "purpose": "Lightweight live detection/association; research-only InsightFace weights",
+      "author_source": "https://github.com/deepinsight/insightface/tree/master/model_zoo"
+    }
+  ],
+  "optional_mobilefaceswap": {
+    "source": "https://github.com/Seanseattle/MobileFaceSwap/tree/master",
+    "download_script": "scripts/download_mobile.py",
+    "archive_sha256": "8e45272de4cc55d64294d282bb7605343a406696a05209203065aa1b51aed58e",
+    "weights": {
+      "arcface.pdparams": "adc5d94075fc2f8ad93ba1040310b97f604843d03c82ecf3a4bdb86af658ca3b",
+      "MobileFaceSwap_224.pdparams": "ee51a18684d2862363deefde14220d7e7eb33b78b5b1840e1a76566a7f3508fb"
+    }
+  }
+}

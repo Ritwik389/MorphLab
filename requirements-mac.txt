@@ -1,0 +1,5 @@
+# Optional native CoreML conversion/runtime on Apple Silicon.
+coremltools==9.0
+onnx2torch==1.5.15
+torch==2.15.0
+torchvision==0.29.2

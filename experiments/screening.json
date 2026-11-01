@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "seed": 2401,
+  "split": "development",
+  "repetitions": 3,
+  "frames_per_clip": 2,
+  "scope": "Sampled-frame model quality and backend stage screening; not sustained webcam acceptance",
+  "candidates": [
+    {"name":"cpu-fp32-reference","runtime":"cpu","dense":true,"interval_ms":150,"smooth":true,"mask":"soft","resolution":[640,480]},
+    {"name":"coreml-fp16","runtime":"coreml","precision":"fp16","dense":true,"interval_ms":150,"smooth":true,"mask":"soft","resolution":[640,480]},
+    {"name":"coreml-int8","runtime":"coreml","precision":"int8","dense":true,"interval_ms":150,"smooth":true,"mask":"soft","resolution":[640,480]},
+    {"name":"mobile-dense-soft","runtime":"mobile","dense":true,"interval_ms":150,"smooth":true,"mask":"soft","resolution":[640,480]},
+    {"name":"mobile-five-point","runtime":"mobile","dense":false,"interval_ms":150,"smooth":true,"mask":"soft","resolution":[640,480]},
+    {"name":"mobile-binary","runtime":"mobile","dense":true,"interval_ms":150,"smooth":true,"mask":"binary","resolution":[640,480]},
+    {"name":"mobile-no-smoothing","runtime":"mobile","dense":true,"interval_ms":150,"smooth":false,"mask":"soft","resolution":[640,480]},
+    {"name":"mobile-detect-100ms","runtime":"mobile","dense":true,"interval_ms":100,"smooth":true,"mask":"soft","resolution":[640,480]},
+    {"name":"mobile-detect-250ms","runtime":"mobile","dense":true,"interval_ms":250,"smooth":true,"mask":"soft","resolution":[640,480]},
+    {"name":"mobile-480","runtime":"mobile","dense":true,"interval_ms":150,"smooth":true,"mask":"soft","resolution":[480,360]},
+    {"name":"mobile-960","runtime":"mobile","dense":true,"interval_ms":150,"smooth":true,"mask":"soft","resolution":[960,720]}
+  ]
+}

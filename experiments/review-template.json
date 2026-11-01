@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "completed": false,
+  "reviewer_count": 0,
+  "review_type": "author review pending; independent reviewers not yet collected",
+  "rubric": {"0":"No visible defect","1":"Minor local defect","2":"Noticeable flicker or boundary defect","3":"Severe misalignment, frozen face, wrong person, expression corruption or background spill"},
+  "dimensions":["identity resemblance","expression preservation","temporal flicker","face boundaries","lighting"],
+  "randomisation_seed":2401,
+  "ratings":[],
+  "notes":"Do not fill results retrospectively from model names or numerical scores. Record blinded excerpt IDs and reveal candidate mapping after rating."
+}

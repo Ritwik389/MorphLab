@@ -1,0 +1,9 @@
+pytest==9.2.0
+ruff==0.17.3
+hypothesis>=6.130,<7
+pytest-cov>=6,<8
+pip-audit>=2.9,<3
+# Original desktop/legacy regression imports; excluded from production.
+PySide6>=6.7,<7
+gradio-client>=2,<3
+cv2_enumerate_cameras==1.1.15

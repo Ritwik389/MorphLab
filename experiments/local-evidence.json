@@ -1,0 +1,22 @@
+{
+  "m4-browser-performance": {
+    "artifact": "outputs/evaluations/finalized-m4-performance/report.json",
+    "sha256": "807d58a746770c45c6890fb8fc1af5314339ea0d256ada98b43e8b1e6f2137a5",
+    "source_tree_sha256": "8e838672a8698eb39f24b425b11e03f06ba82ed2b0a455a345e3e646f9d51d64"
+  },
+  "one-hour-soak": {
+    "artifact": "outputs/evaluations/finalized-longevity/browser-soak.json",
+    "sha256": "12b344423a74acca4d3389cd6506d541b881f35a55f4fe36418fc11290e28514",
+    "source_tree_sha256": "8e838672a8698eb39f24b425b11e03f06ba82ed2b0a455a345e3e646f9d51d64"
+  },
+  "100-start-stop": {
+    "artifact": "outputs/evaluations/finalized-longevity/lifecycle-100.json",
+    "sha256": "653d40375033b8f008d02db8b0c487aec77aa9ae30ff1e743bfc2394b7994e20",
+    "source_tree_sha256": "8e838672a8698eb39f24b425b11e03f06ba82ed2b0a455a345e3e646f9d51d64"
+  },
+  "security-audit": {
+    "artifact": "outputs/evaluations/security-evidence.json",
+    "sha256": "a48b6a3acaf9edd77765b07ab74de6d5e8b4602c49b3c2864cb30d857d0fa62a",
+    "source_tree_sha256": "8e838672a8698eb39f24b425b11e03f06ba82ed2b0a455a345e3e646f9d51d64"
+  }
+}

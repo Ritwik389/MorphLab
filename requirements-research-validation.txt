@@ -1,0 +1,2 @@
+# Optional: verifies the PyTorch port against the authors' Paddle implementation.
+paddlepaddle==3.3.1

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "seed": 2401,
+  "split": "validation",
+  "repetitions": 5,
+  "frames_per_clip": 6,
+  "scope": "Frozen five-repeat validation mask comparison on disjoint actors 05\u201308; sparse quality samples, not live FPS or held-out acceptance",
+  "candidates": [
+    {
+      "name": "mobile-calibrated",
+      "runtime": "mobile",
+      "dense": true,
+      "interval_ms": 150,
+      "smooth": true,
+      "mask": "soft",
+      "resolution": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "mobile-binary",
+      "runtime": "mobile",
+      "dense": true,
+      "interval_ms": 150,
+      "smooth": true,
+      "mask": "binary",
+      "resolution": [
+        640,
+        480
+      ]
+    },
+    {
+      "name": "standard-native-int8",
+      "runtime": "coreml",
+      "dense": true,
+      "interval_ms": 150,
+      "smooth": true,
+      "mask": "binary",
+      "resolution": [
+        640,
+        480
+      ],
+      "precision": "int8"
+    }
+  ]
+}

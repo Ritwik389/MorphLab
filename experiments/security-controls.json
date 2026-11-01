@@ -1,0 +1,14 @@
+{
+  "standard": "OWASP ASVS 5.0.0, selected checks only; no certification claim",
+  "source": "https://github.com/OWASP/ASVS/tree/v5.0.0/5.0/en",
+  "controls": [
+    {"id":"V4.4.2-subset","scope":"WebSocket origin rejection","tests":["test_websocket_rejects_cross_origin_and_invalid_session"]},
+    {"id":"V5.2.1-subset","scope":"Packet and upload limits","tests":["test_arbitrary_packet_cannot_escape_with_unexpected_error","test_rejected_upload_always_closes_file"]},
+    {"id":"V5.2.6-subset","scope":"Reject oversized decoded images","tests":["test_decoded_image_size_is_checked_before_expansion"]},
+    {"id":"V5.3.2-subset","scope":"Source-path allowlist and generated export paths","tests":["test_unknown_source_example_cannot_read_arbitrary_files"]},
+    {"id":"V1.4.3-subset","scope":"Camera/session and owned-buffer cleanup","tests":["test_frame_send_disconnect_always_releases_live_reservation","test_expired_session_drops_identity_buffers"]},
+    {"id":"local-host-and-origin-boundary","scope":"HTTP origin and Host allowlist","tests":["test_cross_origin_http_write_and_purge","test_local_server_rejects_untrusted_host_headers"]},
+    {"id":"model-integrity","scope":"Download hashes/TLS and unpublished corrupt weights","tests":["test_model_hash_and_tls_are_verified","test_bad_model_hash_is_not_published"]}
+  ],
+  "not_covered":["Full ASVS levels","Independent penetration testing","Deployment authentication/SSO and tenant authorisation","Hosted TLS/proxy configuration","Reachability triage of unresolved OS advisories","Antivirus scanning"]
+}

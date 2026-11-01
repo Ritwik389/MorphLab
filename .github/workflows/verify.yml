@@ -1,0 +1,108 @@
+name: MorphLab verification
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deterministic:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: python scripts/install_runtime.py --dev
+      - name: Linux media tools
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg libgl1
+      - name: Windows media tools
+        if: runner.os == 'Windows'
+        run: choco install ffmpeg --yes --no-progress
+      - name: macOS media tools
+        if: runner.os == 'macOS'
+        run: command -v ffmpeg || brew install ffmpeg
+      - run: python -m ruff check modules/studio_live.py modules/source_checks.py modules/evaluation.py scripts/verify.py
+      - run: python -m pytest -q -m "not model" --junitxml=outputs/ci/pytest.xml
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+      - run: npm run test:unit
+        working-directory: frontend
+      - name: PR browser smoke without models
+        if: matrix.os == 'ubuntu-latest' && github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          (cd frontend && npx playwright install --with-deps chrome)
+          python scripts/build_camera_fixture.py --static
+          python app.py > /tmp/aims-pr.log 2>&1 &
+          sleep 3
+          (cd frontend && npx playwright test --config playwright.smoke.config.ts)
+      - name: Main branch real CPU inference
+        if: github.event_name != 'pull_request'
+        run: |
+          python scripts/download_models.py
+          python -m pytest -q -m model
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: checks-${{ matrix.os }}
+          path: outputs/ci
+          retention-days: 30
+  browser-container:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: python scripts/install_runtime.py --dev
+      - run: python scripts/download_models.py
+      - run: npm ci && npm run build && npx playwright install --with-deps chrome
+        working-directory: frontend
+      - run: python scripts/build_camera_fixture.py
+      - name: Start CPU app
+        run: python app.py > /tmp/aims.log 2>&1 &
+      - name: Wait for readiness
+        run: python -c "import time,urllib.request; time.sleep(3); urllib.request.urlopen('http://127.0.0.1:7860/api/system',timeout=30)"
+      - run: npm test
+        working-directory: frontend
+        env:
+          AIMS_CPU_CI: '1'
+      - run: docker build --build-arg DOWNLOAD_MODELS=0 -t morphlab-studio:ci .
+      - run: python scripts/smoke_container.py --image morphlab-studio:ci --output outputs/ci/container
+      - name: Production dependency audit
+        run: python -m pip_audit -r requirements-web.lock --require-hashes --format json --output outputs/ci/dependency-audit.json
+      - name: Container high and critical vulnerability gate
+        run: >-
+          docker run --rm
+          -v /var/run/docker.sock:/var/run/docker.sock
+          -v "$PWD/outputs/ci:/reports"
+          aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+          image --scanners vuln --severity HIGH,CRITICAL --format json
+          --output /reports/container-audit.json --exit-code 1 morphlab-studio:ci
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: browser-traces
+          path: |
+            outputs/playwright
+            outputs/ci
+          retention-days: 30

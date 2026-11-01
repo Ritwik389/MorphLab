@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "completed": false,
+  "reviewer": "",
+  "device": "Apple M4 physical webcam / native Safari",
+  "checklist": [
+    {"name":"Camera remains off until Start","passed":null},
+    {"name":"Head turns, nods, expressions and translation recover automatically","passed":null},
+    {"name":"Person thumbnails track identities through crossings","passed":null},
+    {"name":"Two-second absence policy switches without clicking","passed":null},
+    {"name":"Source/target changes never display stale edits","passed":null},
+    {"name":"Stop, denial, navigation and reconnect release resources","passed":null},
+    {"name":"Native Safari pages, keyboard controls and downloads work","passed":null}
+  ],
+  "notes":"This is a pending checklist, not test evidence. Replay or WebKit results cannot fill native Safari/physical-camera fields."
+}

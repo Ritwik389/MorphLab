@@ -1,0 +1,48 @@
+{
+  "project": "MorphLab",
+  "graphify_version": "0.9.95",
+  "created_at": "2026-11-01T17:05:31.916206+00:00",
+  "scope": "Authored code and technical documentation",
+  "excludes": [
+    "graphify-out",
+    "assets",
+    "third_party",
+    "locales",
+    "docs/images"
+  ],
+  "gitignore": true,
+  "detected_files": 158,
+  "total_words": 84204,
+  "semantic_files": 25,
+  "semantic_coverage": "All 25 dispatched files read completely; line counts validated",
+  "nodes": 1275,
+  "edges": 3236,
+  "communities": 64,
+  "host_agent_usage_available": false,
+  "diagnostic_counts": {
+    "raw_edge_count": 3421,
+    "dangling_endpoint_edges": 741,
+    "missing_endpoint_edges": 0,
+    "self_loop_edges": 2,
+    "exact_duplicate_edges": 51,
+    "undirected_same_endpoint_collapsed_edges": 184
+  },
+  "limitations": [
+    "One TOML file produced no nodes",
+    "22 code/configuration files yielded no symbols",
+    "Unresolved references and collapsed undirected relationships are not a lossless call graph",
+    "Semantic links require source verification",
+    "Interactive HTML fetches vis-network from an integrity-pinned CDN; CLI queries work offline"
+  ],
+  "checked_queries": [
+    "graphify query \"LiveSession tracking source revision\" --budget 1500",
+    "graphify query \"runtime registry MobileRuntime CoreML\" --dfs --budget 1500",
+    "graphify explain LiveSession"
+  ],
+  "context_size_estimate": {
+    "naive_tokens": 85000,
+    "average_query_tokens": 1285,
+    "ratio": 66.1,
+    "scope": "Graphify built-in estimate over four generic queries; not measured agent accuracy, speed or cost"
+  }
+}

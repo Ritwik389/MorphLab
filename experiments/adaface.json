@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "model": "AdaFace IR50 WebFace4M",
+  "revision": "c60eaa786a42c03444f3df7096dbaf9d57ae010d",
+  "source": "https://github.com/mk-minchul/AdaFace",
+  "download": "https://drive.google.com/file/d/1BmDRrhPsHSbXcWZoYFPJg2KJn1sd3QpN/view",
+  "sha256": "52cca7c64808fea6f44f9b9aee2b0e091bf96c1ab4f6e31bedcdf5d77009b4f8",
+  "source_sha256": {
+    "net.py": "b4db4eb0174a385fd29e5f616391b50d443f455990c8b88dcab1f8021af8ba4c",
+    "LICENSE": "95b6e493eb9dba27f2150304e790ae254bab18d1611f4d6e2ade28fa3a271583"
+  },
+  "preprocessing": "112x112 BGR, float [-1,1]; authors backbone, not the live recognizer",
+  "scope": "Offline evaluation only; shared training data may still overlap other pretrained models."
+}

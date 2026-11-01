@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "upstream": {
+    "git_revision": "2bf2728c6d3e2df1086fa2dc3e25de3944532a10",
+    "status": "one-photo CLI run completed",
+    "limitations": "Historical upstream timings are not re-labelled as current runs; isolated original environment required for rerun.",
+    "resolved_dependencies": ".cache/evaluation/upstream-requirements.lock",
+    "dependency_lock_sha256": "f7d067eeac4623c3adc3a754385756332b4fad91ec14f76110edfe5fc43fad3c",
+    "environment": ".cache/evaluation/upstream-venv",
+    "note": "Original declared dependencies resolved on the current M4 in an isolated Python3.11 environment; exact resolved lock retained.",
+    "result": "outputs/evaluations/upstream-run.json",
+    "duration_seconds": 9.793806832982227
+  },
+  "pre_flagship": {
+    "manifest": ".cache/evaluation/pre-flagship/manifest.json",
+    "archive": ".cache/evaluation/pre-flagship/source.tar.gz",
+    "cpu_comparison": "outputs/evaluations/photo-baselines-verified/report.html",
+    "recovery_reproduction": "outputs/evaluations/recovery-comparison/report.html"
+  },
+  "candidate": {
+    "status": "Research release candidate; human checks intentionally pending",
+    "source_fingerprint": "Generated per run; product and verification fingerprints recorded separately"
+  }
+}

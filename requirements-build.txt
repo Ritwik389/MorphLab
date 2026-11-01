@@ -1,0 +1,5 @@
+# Build InsightFace against the same NumPy ABI used at runtime.
+numpy==1.26.4
+cython==3.3.0
+setuptools==84.2.1
+wheel==0.48.0

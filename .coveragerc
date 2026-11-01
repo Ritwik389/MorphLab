@@ -1,0 +1,11 @@
+[run]
+branch = True
+source = modules
+
+[report]
+include =
+    modules/studio_live.py
+    modules/studio_api.py
+    modules/evaluation.py
+    modules/temporal.py
+show_missing = True

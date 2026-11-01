@@ -1,0 +1,1293 @@
+{
+  "schema_version": 1,
+  "project": "MorphLab",
+  "scope": "Historical AIMS candidate evidence, before the MorphLab rename. Not current-revision release certification.",
+  "report_sha256": "1780e2fcf93ee878b4ffbeed900fc86b4f85375ce88e1f0a9aacfc77963c2435",
+  "manifest": {
+    "git_revision": "2bf2728c6d3e2df1086fa2dc3e25de3944532a10",
+    "source_tree_sha256": "8e838672a8698eb39f24b425b11e03f06ba82ed2b0a455a345e3e646f9d51d64",
+    "verification_tree_sha256": "6b7ed751a65dd295b785fdc9d4590aa42e8a79a65a3e9f2687e3be45746ac0d9",
+    "python": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "os": "macOS-27.0.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "created_at": 1793550547.869455,
+    "packages": {
+      "numpy": "1.26.4",
+      "onnx": "1.22.0",
+      "onnxruntime": "1.23.2",
+      "torch": "2.15.0",
+      "coremltools": "9.0",
+      "pillow": "13.0.0",
+      "fastapi": "0.162.0",
+      "opencv-python-headless": "4.11.0.86",
+      "pytest": "9.2.0",
+      "hypothesis": "6.170.14"
+    },
+    "suite": "release",
+    "limitations": [
+      "Human checks left Not Run at the author\u2019s request",
+      "Held-out corpus is not reviewed/frozen",
+      "OS-library vulnerability gate remains failed",
+      "Replay performance is not physical-camera or Safari validation",
+      "Windows/hosted CI workflow definitions have not been executed in this workspace"
+    ]
+  },
+  "overall": "Failed",
+  "checks": [
+    {
+      "name": "backend-static",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "backend",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "actual-cpu-model-integration",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "required-backend-checks-executed",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "frontend-build",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "frontend-unit",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "browser",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "corpus-integrity",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "corpus-reviewed-frozen",
+      "status": "Not Run",
+      "required": true
+    },
+    {
+      "name": "heldout-tracking",
+      "status": "Not Run",
+      "required": true
+    },
+    {
+      "name": "m4-browser-performance",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "identity-quality",
+      "status": "Not Run",
+      "required": true
+    },
+    {
+      "name": "visual-author-review",
+      "status": "Not Run",
+      "required": true
+    },
+    {
+      "name": "one-hour-soak",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "100-start-stop",
+      "status": "Passed",
+      "required": true
+    },
+    {
+      "name": "native-safari",
+      "status": "Not Run",
+      "required": true
+    },
+    {
+      "name": "physical-webcam",
+      "status": "Not Run",
+      "required": true
+    },
+    {
+      "name": "security-audit",
+      "status": "Failed",
+      "required": true
+    }
+  ],
+  "experiments": [
+    {
+      "experiment": "Validation quality",
+      "results": [
+        {
+          "candidate": "mobile-calibrated",
+          "runs": 5,
+          "samples": 360,
+          "swapped_samples": 345,
+          "coverage": 0.9583333333333334,
+          "median_p95_backend_ms": 211.71869202516956,
+          "mean_clip_identity_cosine": 0.5800435054633353,
+          "clip_bootstrap_95_ci": [
+            0.5366249824563663,
+            0.6229142237040731
+          ],
+          "full_live_acceptance": "Not Run",
+          "split": "validation",
+          "quality_scope": "Frozen five-repeat validation mask comparison on disjoint actors 05\u201308; sparse quality samples, not live FPS or held-out acceptance",
+          "measurement_source_trees": [
+            "20dd6409d422975699ff844a5faa9aefecb8e424290154965e3f1a6ae7980a88"
+          ]
+        },
+        {
+          "candidate": "mobile-binary",
+          "runs": 5,
+          "samples": 360,
+          "swapped_samples": 345,
+          "coverage": 0.9583333333333334,
+          "median_p95_backend_ms": 184.37365819700062,
+          "mean_clip_identity_cosine": 0.5807487377689944,
+          "clip_bootstrap_95_ci": [
+            0.5346217609941959,
+            0.6243088671730624
+          ],
+          "full_live_acceptance": "Not Run",
+          "split": "validation",
+          "quality_scope": "Frozen five-repeat validation mask comparison on disjoint actors 05\u201308; sparse quality samples, not live FPS or held-out acceptance",
+          "measurement_source_trees": [
+            "20dd6409d422975699ff844a5faa9aefecb8e424290154965e3f1a6ae7980a88",
+            "c561e2350ed3c1731adac5cbcd134fd2cb00ceeda9c2b54b22c802d7f558b20b"
+          ]
+        },
+        {
+          "candidate": "standard-native-int8",
+          "runs": 5,
+          "samples": 360,
+          "swapped_samples": 345,
+          "coverage": 0.9583333333333334,
+          "median_p95_backend_ms": 225.5947751924394,
+          "mean_clip_identity_cosine": 0.8787683212094837,
+          "clip_bootstrap_95_ci": [
+            0.8668542544047038,
+            0.8890748600165049
+          ],
+          "full_live_acceptance": "Not Run",
+          "split": "validation",
+          "quality_scope": "Frozen five-repeat validation mask comparison on disjoint actors 05\u201308; sparse quality samples, not live FPS or held-out acceptance",
+          "measurement_source_trees": [
+            "20dd6409d422975699ff844a5faa9aefecb8e424290154965e3f1a6ae7980a88",
+            "30485d18d4c6520ca6eef519d47f23f412cad3757d4d175eaa891e84fd2a21a1",
+            "c561e2350ed3c1731adac5cbcd134fd2cb00ceeda9c2b54b22c802d7f558b20b"
+          ]
+        }
+      ]
+    },
+    {
+      "experiment": "Paired validation difference",
+      "results": {
+        "schema_version": 1,
+        "split": "validation",
+        "scope": "Five-repeat validation comparison; repeats/frames aggregated within clips, not treated as independent subjects. Not held-out acceptance.",
+        "paired_eligible_samples": 69,
+        "candidate_median": 0.6100532412528992,
+        "baseline_median": 0.6085788607597351,
+        "paired_median_delta": -0.0005090385675430298,
+        "clip_bootstrap_95_ci": [
+          -0.0012501031160354614,
+          9.685754776000977e-06
+        ],
+        "engineering_tolerance": 0.02,
+        "engineering_tolerance_met": true,
+        "candidate_samples": 360,
+        "candidate_swapped_samples": 345,
+        "recognition_failures": 0,
+        "heldout_acceptance": "Not Run"
+      }
+    },
+    {
+      "experiment": "M4 Mobile/MPS trials",
+      "results": {
+        "schema_version": 1,
+        "overall": "Passed",
+        "checks": [
+          {
+            "name": "browser-0",
+            "status": "Passed",
+            "required": true,
+            "detail": "browser-0.json"
+          },
+          {
+            "name": "browser-1",
+            "status": "Passed",
+            "required": true,
+            "detail": "browser-1.json"
+          },
+          {
+            "name": "browser-2",
+            "status": "Passed",
+            "required": true,
+            "detail": "browser-2.json"
+          },
+          {
+            "name": "browser-3",
+            "status": "Passed",
+            "required": true,
+            "detail": "browser-3.json"
+          },
+          {
+            "name": "browser-4",
+            "status": "Passed",
+            "required": true,
+            "detail": "browser-4.json"
+          }
+        ],
+        "experiments": [
+          {
+            "ten_second_windows": [
+              20.6,
+              21,
+              21,
+              21.5,
+              21.2,
+              16,
+              17.4,
+              20.7,
+              16.5,
+              18.8,
+              21.4,
+              19.6
+            ],
+            "scope": "Chrome with a looping, replay fixture as a fake webcam; inspect the fixture manifest for its actual motion scope; includes software capture, encoding, WebSocket, new inference, decode and next animation frame",
+            "resolution": [
+              640,
+              480
+            ],
+            "capture_frame_rate": 24,
+            "duration_seconds": 120.08369999992847,
+            "processed_frames": 2359,
+            "new_displayed_swaps": 2359,
+            "displayed_swap_fps": 19.644631203080895,
+            "p95_capture_to_display_ms": 115,
+            "unique_frame_ids": 2359,
+            "first_half_swaps": 1213,
+            "second_half_swaps": 1146,
+            "browser": "156.0.8078.76",
+            "warmup_seconds": 3
+          },
+          {
+            "ten_second_windows": [
+              20.9,
+              21,
+              21.6,
+              21.2,
+              21.4,
+              19.8,
+              21.2,
+              21.3,
+              21.5,
+              19.9,
+              21.3,
+              20.3
+            ],
+            "scope": "Chrome with a looping, replay fixture as a fake webcam; inspect the fixture manifest for its actual motion scope; includes software capture, encoding, WebSocket, new inference, decode and next animation frame",
+            "resolution": [
+              640,
+              480
+            ],
+            "capture_frame_rate": 24,
+            "duration_seconds": 120.07210000002384,
+            "processed_frames": 2516,
+            "new_displayed_swaps": 2516,
+            "displayed_swap_fps": 20.954076758876546,
+            "p95_capture_to_display_ms": 84.80000007152557,
+            "unique_frame_ids": 2516,
+            "first_half_swaps": 1259,
+            "second_half_swaps": 1257,
+            "browser": "156.0.8078.76",
+            "warmup_seconds": 3
+          },
+          {
+            "ten_second_windows": [
+              21.2,
+              21.5,
+              21.3,
+              21.4,
+              21.3,
+              21.3,
+              21.3,
+              21.5,
+              21.3,
+              20.6,
+              21.4,
+              21.2
+            ],
+            "scope": "Chrome with a looping, replay fixture as a fake webcam; inspect the fixture manifest for its actual motion scope; includes software capture, encoding, WebSocket, new inference, decode and next animation frame",
+            "resolution": [
+              640,
+              480
+            ],
+            "capture_frame_rate": 24,
+            "duration_seconds": 120.06930000007152,
+            "processed_frames": 2555,
+            "new_displayed_swaps": 2555,
+            "displayed_swap_fps": 21.279377825959493,
+            "p95_capture_to_display_ms": 76.5,
+            "unique_frame_ids": 2555,
+            "first_half_swaps": 1280,
+            "second_half_swaps": 1275,
+            "browser": "156.0.8078.76",
+            "warmup_seconds": 3
+          },
+          {
+            "ten_second_windows": [
+              21.2,
+              21.2,
+              21.3,
+              21.3,
+              21.3,
+              21.1,
+              21.3,
+              21.4,
+              21.4,
+              21.4,
+              21.3,
+              21.4
+            ],
+            "scope": "Chrome with a looping, replay fixture as a fake webcam; inspect the fixture manifest for its actual motion scope; includes software capture, encoding, WebSocket, new inference, decode and next animation frame",
+            "resolution": [
+              640,
+              480
+            ],
+            "capture_frame_rate": 24,
+            "duration_seconds": 120.0735,
+            "processed_frames": 2557,
+            "new_displayed_swaps": 2557,
+            "displayed_swap_fps": 21.295289968227795,
+            "p95_capture_to_display_ms": 78.10000002384186,
+            "unique_frame_ids": 2557,
+            "first_half_swaps": 1274,
+            "second_half_swaps": 1283,
+            "browser": "156.0.8078.76",
+            "warmup_seconds": 3
+          },
+          {
+            "ten_second_windows": [
+              20.2,
+              19.2,
+              19.3,
+              19.9,
+              21.2,
+              21.3,
+              21.3,
+              21.3,
+              21.2,
+              21.2,
+              21.4,
+              21.5
+            ],
+            "scope": "Chrome with a looping, replay fixture as a fake webcam; inspect the fixture manifest for its actual motion scope; includes software capture, encoding, WebSocket, new inference, decode and next animation frame",
+            "resolution": [
+              640,
+              480
+            ],
+            "capture_frame_rate": 24,
+            "duration_seconds": 120.08129999995232,
+            "processed_frames": 2491,
+            "new_displayed_swaps": 2491,
+            "displayed_swap_fps": 20.744279084261986,
+            "p95_capture_to_display_ms": 98,
+            "unique_frame_ids": 2491,
+            "first_half_swaps": 1211,
+            "second_half_swaps": 1280,
+            "browser": "156.0.8078.76",
+            "warmup_seconds": 3
+          }
+        ]
+      }
+    },
+    {
+      "experiment": "CoreML screening",
+      "results": {
+        "schema_version": 1,
+        "overall": "Failed",
+        "checks": [
+          {
+            "name": "browser-0",
+            "status": "Failed",
+            "required": true,
+            "detail": "browser-0.json"
+          }
+        ],
+        "experiments": [
+          {
+            "ten_second_windows": [
+              12.2,
+              12.3,
+              12.4,
+              12.5,
+              12.4,
+              12.2,
+              12.2,
+              11.4,
+              11.5,
+              12.3,
+              12.2,
+              12.3
+            ],
+            "scope": "Chrome with a looping, replay fixture as a fake webcam; inspect the fixture manifest for its actual motion scope; includes software capture, encoding, WebSocket, new inference, decode and next animation frame",
+            "resolution": [
+              640,
+              480
+            ],
+            "capture_frame_rate": 24,
+            "duration_seconds": 120.09820000004768,
+            "processed_frames": 1460,
+            "new_displayed_swaps": 1460,
+            "displayed_swap_fps": 12.15671841875582,
+            "p95_capture_to_display_ms": 143.30000007152557,
+            "unique_frame_ids": 1460,
+            "first_half_swaps": 740,
+            "second_half_swaps": 720,
+            "browser": "156.0.8078.76",
+            "warmup_seconds": 3
+          }
+        ]
+      }
+    },
+    {
+      "experiment": "Browser longevity",
+      "results": {
+        "complete": true,
+        "duration_seconds": 3602.673,
+        "rss_growth_mb": -3.3515625,
+        "memory_gate_passed": true,
+        "new_displayed_swaps": 72859,
+        "frame_progress_verified": true,
+        "camera_tracks_released": true,
+        "server_sessions_released": true,
+        "scope": "Chrome fake-camera full browser live pipeline; progress checked every minute"
+      }
+    },
+    {
+      "experiment": "Clean Mac CPU install",
+      "results": {
+        "complete": true,
+        "scope": "Fresh isolated Mac CPU production environment, real detection/enrollment/generation; no development or optional Mac GPU packages installed",
+        "pixel_change_mean_0_255": 3.5521180555555554,
+        "duration_seconds": 48.76226087496616,
+        "runtime": {
+          "os": "Darwin",
+          "architecture": "arm64",
+          "apple_silicon": true,
+          "available_providers": [
+            "CoreMLExecutionProvider",
+            "AzureExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "requested_device": "cpu",
+          "active_runtime": "ONNX Runtime \u00b7 CPUExecutionProvider",
+          "state": "ready",
+          "fallback_reason": null,
+          "model": "inswapper_128",
+          "benchmark": null,
+          "performance_target_fps": 15,
+          "live_runtime": null,
+          "live_note": null,
+          "live_tracking": null,
+          "live_tracking_hashes": null,
+          "live_model_manifest": null,
+          "hardware_location": "server",
+          "active_live_sessions": 0
+        }
+      }
+    },
+    {
+      "experiment": "Linux CPU container",
+      "results": {
+        "complete": true,
+        "scope": "Linux CPU container, two CPUs/four GiB, read-only models, real photo inference; no Mac GPU claim",
+        "runtime": {
+          "os": "Linux",
+          "architecture": "aarch64",
+          "apple_silicon": false,
+          "available_providers": [
+            "AzureExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "requested_device": "cpu",
+          "active_runtime": "ONNX Runtime \u00b7 CPUExecutionProvider",
+          "state": "ready",
+          "fallback_reason": null,
+          "model": "inswapper_128",
+          "benchmark": null,
+          "performance_target_fps": 15,
+          "live_runtime": null,
+          "live_note": null,
+          "live_tracking": null,
+          "live_tracking_hashes": null,
+          "live_model_manifest": null,
+          "hardware_location": "server",
+          "active_live_sessions": 0,
+          "source_tree_sha256": "8e838672a8698eb39f24b425b11e03f06ba82ed2b0a455a345e3e646f9d51d64"
+        },
+        "image_id": "sha256:2b4a28cd717a1c4f3fce6bd8741038f91190c6ce09fe6fa592bc8901a26f1370",
+        "duration_seconds": 70.42621054197662,
+        "result_sha256": "91ff43e9368fbcdd85a9837fec7b22019311140fa62217245935ed076428525c",
+        "result_bytes": 560684,
+        "pixel_change_mean_0_255": 3.5521104600694446,
+        "polls": [
+          {
+            "elapsed_seconds": 0.16102862497791648,
+            "request_seconds": 0.009257416008040309,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 1.1780522919725627,
+            "request_seconds": 0.011973083019256592,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 2.2064834169577807,
+            "request_seconds": 0.025449917186051607,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 3.224712667055428,
+            "request_seconds": 0.017817749874666333,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 4.451567332958803,
+            "request_seconds": 0.22134512499906123,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 7.654590541962534,
+            "request_seconds": 2.1979140830226243,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 8.90016679186374,
+            "request_seconds": 0.05323762493208051,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 11.460185332922265,
+            "request_seconds": 1.555986125022173,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 12.555018624989316,
+            "request_seconds": 0.0885712499730289,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 13.589782957918942,
+            "request_seconds": 0.03369354084134102,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 14.602498791879043,
+            "request_seconds": 0.01039187517017126,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 15.61794920801185,
+            "request_seconds": 0.0104072499088943,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 22.699505624826998,
+            "request_seconds": 6.079521792009473,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 23.730456749908626,
+            "request_seconds": 0.028803125023841858,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 24.802954874932766,
+            "request_seconds": 0.06744254101067781,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 25.84744912502356,
+            "request_seconds": 0.03944679186679423,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 26.90468862489797,
+            "request_seconds": 0.05697720916941762,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 27.923335416940972,
+            "request_seconds": 0.017303917091339827,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 28.962761166971177,
+            "request_seconds": 0.03437316697090864,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 32.868021958041936,
+            "request_seconds": 2.899019750067964,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 33.93865104182623,
+            "request_seconds": 0.06805254216305912,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 34.99020174983889,
+            "request_seconds": 0.05048629082739353,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 36.034929333021864,
+            "request_seconds": 0.04343454190529883,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 37.16175804194063,
+            "request_seconds": 0.10914370813407004,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 38.195231332909316,
+            "request_seconds": 0.03321104100905359,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 39.24114791699685,
+            "request_seconds": 0.04443958401679993,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 40.27418420789763,
+            "request_seconds": 0.025661207968369126,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 41.293324708007276,
+            "request_seconds": 0.01166841690428555,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 42.31929179187864,
+            "request_seconds": 0.02223387500271201,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 43.33487854199484,
+            "request_seconds": 0.014022875111550093,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 44.35265187500045,
+            "request_seconds": 0.012733499985188246,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 45.414311416912824,
+            "request_seconds": 0.06111583416350186,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 46.43414791696705,
+            "request_seconds": 0.01859404193237424,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 47.45406891684979,
+            "request_seconds": 0.016904375050216913,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 48.49182150000706,
+            "request_seconds": 0.031030084006488323,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 49.51497504184954,
+            "request_seconds": 0.016827208921313286,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 50.58535708300769,
+            "request_seconds": 0.06518445909023285,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 51.63016249984503,
+            "request_seconds": 0.04112487495876849,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 52.67137366696261,
+            "request_seconds": 0.038374291034415364,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 53.724063749890774,
+            "request_seconds": 0.050731625175103545,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 54.788764332886785,
+            "request_seconds": 0.061588125070557,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 55.85009095794521,
+            "request_seconds": 0.0562950000166893,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 56.93924304191023,
+            "request_seconds": 0.08757866686210036,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 57.99121041689068,
+            "request_seconds": 0.047264458145946264,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 59.05617945804261,
+            "request_seconds": 0.059884042013436556,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 60.11771466699429,
+            "request_seconds": 0.05827245907858014,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 61.19413920794614,
+            "request_seconds": 0.07150695892050862,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 62.22282204194926,
+            "request_seconds": 0.02363958302885294,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 63.23294200003147,
+            "request_seconds": 0.008350124815478921,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 64.25772854196839,
+            "request_seconds": 0.021304833004251122,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 65.32925112498924,
+            "request_seconds": 0.06786008295603096,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 66.3517782499548,
+            "request_seconds": 0.0174814579077065,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 67.44292516703717,
+            "request_seconds": 0.08108620904386044,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 68.491878666915,
+            "request_seconds": 0.04118045815266669,
+            "state": "running"
+          },
+          {
+            "elapsed_seconds": 69.51721074990928,
+            "request_seconds": 0.020263957791030407,
+            "state": "complete"
+          }
+        ],
+        "session_cleanup_passed": true
+      }
+    },
+    {
+      "experiment": "Hardware",
+      "results": {
+        "recorded_at": 1793541384.297882,
+        "os": "macOS-27.0.1-arm64-arm-64bit",
+        "architecture": "arm64",
+        "hardware": {
+          "hw.model": "Mac16,13",
+          "machdep.cpu.brand_string": "Apple M4",
+          "hw.memsize": "17179869184",
+          "hw.logicalcpu": "10",
+          "hw.physicalcpu": "10"
+        },
+        "logical_cores": 10,
+        "unified_memory_bytes": 17179869184,
+        "scope": "Local M4 hardware snapshot during browser trials; no serial number/UUID collected",
+        "warmup": "Source/model readiness followed by a three-second live warmup before the two-minute interval; warmup excluded",
+        "display_path": "Chrome headless fake camera, worker enabled, HUD closed during timing; software capture to next animation frame, not physical camera exposure latency",
+        "power_snapshot": {
+          "recorded_at": 1793549478.649445,
+          "source": "Battery Power",
+          "battery_percent": 59,
+          "state": "discharging",
+          "thermal_warning": "No thermal warning level reported by pmset",
+          "performance_warning": "No performance warning level reported by pmset",
+          "scope": "Snapshot immediately before final isolated trials; no hardware temperature measurement or serial/battery identifier recorded"
+        }
+      }
+    },
+    {
+      "experiment": "Toolchain",
+      "results": {
+        "ffmpeg": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+        "ffprobe": "ffprobe version 9.0.1 Copyright (c) 2007-2026 the FFmpeg developers",
+        "node": "v25.9.0",
+        "npm": "11.12.1",
+        "playwright": "1.64.1"
+      }
+    },
+    {
+      "experiment": "CPU baseline comparison",
+      "results": {
+        "schema_version": 1,
+        "overall": "Passed",
+        "checks": [
+          {
+            "name": "candidate-2",
+            "status": "Passed",
+            "required": true,
+            "detail": "candidate-2.log"
+          },
+          {
+            "name": "candidate-0",
+            "status": "Passed",
+            "required": true,
+            "detail": "candidate-0.log"
+          },
+          {
+            "name": "upstream-2",
+            "status": "Passed",
+            "required": true,
+            "detail": "upstream-2.log"
+          },
+          {
+            "name": "pre-flagship-1",
+            "status": "Passed",
+            "required": true,
+            "detail": "pre-flagship-1.log"
+          },
+          {
+            "name": "candidate-1",
+            "status": "Passed",
+            "required": true,
+            "detail": "candidate-1.log"
+          },
+          {
+            "name": "pre-flagship-2",
+            "status": "Passed",
+            "required": true,
+            "detail": "pre-flagship-2.log"
+          },
+          {
+            "name": "pre-flagship-0",
+            "status": "Passed",
+            "required": true,
+            "detail": "pre-flagship-0.log"
+          },
+          {
+            "name": "upstream-1",
+            "status": "Passed",
+            "required": true,
+            "detail": "upstream-1.log"
+          },
+          {
+            "name": "upstream-0",
+            "status": "Passed",
+            "required": true,
+            "detail": "upstream-0.log"
+          }
+        ],
+        "experiments": [
+          {
+            "baseline": "candidate",
+            "repeat": 2,
+            "process_seconds": 18.885471208021045,
+            "status": "Passed",
+            "duration_seconds": 11.69171587494202,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime": "1.23.2",
+              "onnx": "1.22.0",
+              "pillow": "13.0.0",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4982fe1a785ddd694dfab84a965425de4705d6f74073475d1e9bddfc0d0ea500"
+          },
+          {
+            "baseline": "candidate",
+            "repeat": 0,
+            "process_seconds": 18.29537233291194,
+            "status": "Passed",
+            "duration_seconds": 12.220993374940008,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime": "1.23.2",
+              "onnx": "1.22.0",
+              "pillow": "13.0.0",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4982fe1a785ddd694dfab84a965425de4705d6f74073475d1e9bddfc0d0ea500"
+          },
+          {
+            "baseline": "upstream",
+            "repeat": 2,
+            "process_seconds": 24.33922633319162,
+            "status": "Passed",
+            "duration_seconds": 20.24554929183796,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime-silicon": "1.16.3",
+              "onnx": "1.18.0",
+              "pillow": "12.1.1",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4f01d6236669542f40f16446b59f000581b1a03f49936394c21dc5d9056dfb21"
+          },
+          {
+            "baseline": "pre-flagship",
+            "repeat": 1,
+            "process_seconds": 18.188901541987434,
+            "status": "Passed",
+            "duration_seconds": 11.97114891698584,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime": "1.23.2",
+              "onnx": "1.22.0",
+              "pillow": "13.0.0",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4982fe1a785ddd694dfab84a965425de4705d6f74073475d1e9bddfc0d0ea500"
+          },
+          {
+            "baseline": "candidate",
+            "repeat": 1,
+            "process_seconds": 17.81163112493232,
+            "status": "Passed",
+            "duration_seconds": 11.907031666953117,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime": "1.23.2",
+              "onnx": "1.22.0",
+              "pillow": "13.0.0",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4982fe1a785ddd694dfab84a965425de4705d6f74073475d1e9bddfc0d0ea500"
+          },
+          {
+            "baseline": "pre-flagship",
+            "repeat": 2,
+            "process_seconds": 17.412479124963284,
+            "status": "Passed",
+            "duration_seconds": 11.589715000009164,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime": "1.23.2",
+              "onnx": "1.22.0",
+              "pillow": "13.0.0",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4982fe1a785ddd694dfab84a965425de4705d6f74073475d1e9bddfc0d0ea500"
+          },
+          {
+            "baseline": "pre-flagship",
+            "repeat": 0,
+            "process_seconds": 17.315246541053057,
+            "status": "Passed",
+            "duration_seconds": 11.83959741704166,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime": "1.23.2",
+              "onnx": "1.22.0",
+              "pillow": "13.0.0",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4982fe1a785ddd694dfab84a965425de4705d6f74073475d1e9bddfc0d0ea500"
+          },
+          {
+            "baseline": "upstream",
+            "repeat": 1,
+            "process_seconds": 24.705835416913033,
+            "status": "Passed",
+            "duration_seconds": 20.170211541000754,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime-silicon": "1.16.3",
+              "onnx": "1.18.0",
+              "pillow": "12.1.1",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4f01d6236669542f40f16446b59f000581b1a03f49936394c21dc5d9056dfb21"
+          },
+          {
+            "baseline": "upstream",
+            "repeat": 0,
+            "process_seconds": 21.69711837498471,
+            "status": "Passed",
+            "duration_seconds": 17.531655834056437,
+            "output_exists": true,
+            "packages": {
+              "numpy": "1.26.4",
+              "onnxruntime-silicon": "1.16.3",
+              "onnx": "1.18.0",
+              "pillow": "12.1.1",
+              "insightface": "0.7.3"
+            },
+            "output_sha256": "4f01d6236669542f40f16446b59f000581b1a03f49936394c21dc5d9056dfb21"
+          }
+        ]
+      }
+    },
+    {
+      "experiment": "Recovery state reproduction",
+      "results": {
+        "schema_version": 1,
+        "overall": "Passed",
+        "checks": [
+          {
+            "name": "old-defect-reproduced",
+            "status": "Passed",
+            "detail": "pre-flagship.json; mocked observations",
+            "required": true
+          },
+          {
+            "name": "candidate-recovers",
+            "status": "Passed",
+            "detail": "candidate.json; same observations",
+            "required": true
+          }
+        ],
+        "experiments": [
+          {
+            "observations": [
+              {
+                "frame_id": 0,
+                "face_present": true,
+                "selected": 1,
+                "swapped": true,
+                "message": "Identity applied"
+              },
+              {
+                "frame_id": 1,
+                "face_present": false,
+                "selected": null,
+                "swapped": false,
+                "message": "Looking for a face\u2026"
+              },
+              {
+                "frame_id": 2,
+                "face_present": false,
+                "selected": null,
+                "swapped": false,
+                "message": "Looking for a face\u2026"
+              },
+              {
+                "frame_id": 3,
+                "face_present": true,
+                "selected": null,
+                "swapped": false,
+                "message": "Looking for a face\u2026"
+              },
+              {
+                "frame_id": 4,
+                "face_present": true,
+                "selected": null,
+                "swapped": false,
+                "message": "Looking for a face\u2026"
+              },
+              {
+                "frame_id": 5,
+                "face_present": true,
+                "selected": null,
+                "swapped": false,
+                "message": "Looking for a face\u2026"
+              }
+            ],
+            "recovered": false,
+            "scope": "Mocked observation/inference control-state reproduction only"
+          },
+          {
+            "observations": [
+              {
+                "frame_id": 0,
+                "face_present": true,
+                "selected": 1,
+                "swapped": true,
+                "message": "Identity applied"
+              },
+              {
+                "frame_id": 1,
+                "face_present": false,
+                "selected": 1,
+                "swapped": false,
+                "message": "Looking for a face\u2026"
+              },
+              {
+                "frame_id": 2,
+                "face_present": false,
+                "selected": 1,
+                "swapped": false,
+                "message": "Looking for a face\u2026"
+              },
+              {
+                "frame_id": 3,
+                "face_present": true,
+                "selected": 1,
+                "swapped": true,
+                "message": "Identity applied"
+              },
+              {
+                "frame_id": 4,
+                "face_present": true,
+                "selected": 1,
+                "swapped": true,
+                "message": "Identity applied"
+              },
+              {
+                "frame_id": 5,
+                "face_present": true,
+                "selected": 1,
+                "swapped": true,
+                "message": "Identity applied"
+              }
+            ],
+            "recovered": true,
+            "scope": "Mocked observation/inference control-state reproduction only"
+          }
+        ]
+      }
+    },
+    {
+      "experiment": "Component removals",
+      "results": {
+        "scope": "Continuous genuine development speech; backend timing excludes IO and evaluation, not browser FPS; no held-out identity-switch ground truth",
+        "background_condition": "Concurrent one-session MPS browser soak; component screen under shared GPU load, not browser throughput",
+        "rows": [
+          {
+            "variant": "dense-150",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 22.640532873751944,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.008057533410248278
+          },
+          {
+            "variant": "detect-100",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 22.338850087280942,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.008049004154575878
+          },
+          {
+            "variant": "detect-250",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 23.82143820075195,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.00803120042018543
+          },
+          {
+            "variant": "detect-every-frame",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 17.994871130561187,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.008055587982240793
+          },
+          {
+            "variant": "five-point",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 31.990765515349015,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.008406327099890898
+          },
+          {
+            "variant": "no-appearance-association",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 27.35322167370817,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.008057533410248278
+          },
+          {
+            "variant": "no-optical-flow",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 13.197536922614539,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.008055587982240793
+          },
+          {
+            "variant": "no-smoothing",
+            "repetitions": 3,
+            "median_backend_fps_excluding_io": 26.302759895527043,
+            "coverage": 1.0,
+            "mean_temporal_edit_residual_0_1": 0.008110533329652043
+          }
+        ],
+        "interpretation": "Frontal one-person speech only. No wrong-person ground truth and no physical-camera claim. Dense geometry costs throughput; this corpus does not establish its benefit on 3D turns. Read stability with equal edit coverage and separate identity/visual diagnostics."
+      }
+    },
+    {
+      "experiment": "Worker and HUD screens",
+      "results": [
+        {
+          "worker": "off",
+          "hud": false,
+          "repetitions": 3,
+          "median_displayed_swap_fps": 21.04316097268388,
+          "median_trial_p95_capture_to_display_ms": 78.89999997615814,
+          "long_tasks_over_50ms": 0,
+          "scope": "Three 20-second screens; not two-minute acceptance. Main-thread heap excludes workers/driver memory."
+        },
+        {
+          "worker": "on",
+          "hud": false,
+          "repetitions": 3,
+          "median_displayed_swap_fps": 21.079026368788185,
+          "median_trial_p95_capture_to_display_ms": 85.89999997615814,
+          "long_tasks_over_50ms": 1,
+          "scope": "Three 20-second screens; not two-minute acceptance. Main-thread heap excludes workers/driver memory."
+        },
+        {
+          "worker": "on",
+          "hud": true,
+          "repetitions": 3,
+          "median_displayed_swap_fps": 21.286589448621992,
+          "median_trial_p95_capture_to_display_ms": 77.60000002384186,
+          "long_tasks_over_50ms": 0,
+          "scope": "Three 20-second screens; not two-minute acceptance. Main-thread heap excludes workers/driver memory."
+        }
+      ]
+    }
+  ]
+}

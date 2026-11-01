@@ -1,0 +1,3 @@
+# Optional classifier, required only when --nsfw-filter is enabled.
+opennsfw2==0.10.2
+tensorflow>=2.15,<2.20; python_version < '3.13'
