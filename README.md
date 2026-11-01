@@ -157,9 +157,3 @@ docker compose up --build
 The CPU container serves port **7860**, runs as a non-root user, and binds to host loopback in Compose. Model downloads are verified; weights can instead be mounted read-only. Native MPS/CoreML acceleration is unavailable inside this Linux container. Free CPU hosting can support a photo demo but is not equivalent to the measured local M4 pipeline. Review the failed security gate before public hosting. [Deployment guide](docs/DEPLOYMENT.md).
 
 The desktop app, research CLI and optional legacy Gradio workbench are retained; Gradio is outside the maintained production dependency lock. Launch it with `./scripts/start_local.sh --legacy` only after installing its optional dependencies. Stop/navigation/disconnect clear active camera sessions; export folders expire while the service runs. Disk deletion is not secure erasure.
-
-## Attribution and licensing
-
-MorphLab builds on [shauryasuyal/Deepfake_Project](https://github.com/shauryasuyal/Deepfake_Project), pinned upstream base `2bf2728c6d3e2df1086fa2dc3e25de3944532a10`. The destination repository's existing [MIT licence](LICENSE) is preserved for original contributions owned by its author; it does **not** grant rights to relicense inherited source, pretrained weights, datasets, or third-party assets. The upstream checkout contained no top-level licence. See [licensing scope](docs/LICENSING.md) before redistribution.
-
-MobileFaceSwap reference code retains Apache-2.0 notices, AdaFace reference code retains MIT notices, and Roboto retains its OFL notice under [`third_party`](third_party). InsightFace pretrained weights have separate terms; code licences do not imply unrestricted model use. Research footage is fetched separately, with RAVDESS CC BY-NC-SA 4.0 provenance recorded. Bundled portraits and fixtures have [individual credits](assets/examples/ATTRIBUTION.md).
