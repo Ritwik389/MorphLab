@@ -48,10 +48,12 @@ Camera frames and source identity weights are in memory. Stop, navigation, disco
 `requirements-web.lock` includes the API and WebSocket dependencies. Regenerate intentionally using:
 
 ```bash
-uv pip compile requirements-web.txt --python-version 3.11 --generate-hashes -o requirements-web.lock
+uv pip compile requirements-web.txt --universal --python-version 3.11 --generate-hashes -o requirements-web.lock
 ```
 
 Frontend dependencies are locked in `frontend/package-lock.json`. Mac acceleration dependencies are in `requirements-mac.txt`; Paddle is optional research validation only. Re-run model conversion/benchmarking after changing relevant runtime versions or macOS.
+
+The universal web lock retains platform markers: Windows receives `colorama`/`pyreadline3` and excludes Unix-only `uvloop`. `tool.uv.environments` restricts compilation to the supported Python 3.11 runtime. Newly downloaded public model weights are published with mode 0644 so a different non-root Linux container user can read a read-only bind mount. Existing weights downloaded by older revisions may still be owner-only; on Linux, run `find models -type f -name '*.onnx' -exec chmod a+r {} +` before mounting those public model files. Do not apply this command to private recordings or biometric data.
 
 Retain the original source and pretrained model terms when distributing or publishing; see README attribution.
 

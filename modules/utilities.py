@@ -319,6 +319,9 @@ def conditional_download(download_directory_path: str, urls: List[str],
                     raise OSError(f"Incomplete download: {filename} ({received}/{total})")
                 if expected and file_sha256(partial) != expected:
                     raise OSError(f"SHA-256 mismatch: {filename}")
+            # Public model weights are mounted read-only by a different, non-root
+            # container user. NamedTemporaryFile starts at 0600 on POSIX.
+            os.chmod(partial, 0o644)
             os.replace(partial, download_file_path)
         finally:
             if partial and os.path.exists(partial):

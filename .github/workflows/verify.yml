@@ -26,21 +26,22 @@ jobs:
       - run: python scripts/install_runtime.py --dev
       - name: Linux media tools
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg libgl1
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg libgl1 libegl1
       - name: Windows media tools
         if: runner.os == 'Windows'
         run: choco install ffmpeg --yes --no-progress
       - name: macOS media tools
         if: runner.os == 'macOS'
         run: command -v ffmpeg || brew install ffmpeg
-      - run: python -m ruff check modules/studio_live.py modules/source_checks.py modules/evaluation.py scripts/verify.py
-      - run: python -m pytest -q -m "not model" --junitxml=outputs/ci/pytest.xml
+      # API route tests serve the production bundle, including on a clean checkout.
       - run: npm ci
         working-directory: frontend
       - run: npm run build
         working-directory: frontend
       - run: npm run test:unit
         working-directory: frontend
+      - run: python -m ruff check modules/studio_live.py modules/source_checks.py modules/evaluation.py scripts/verify.py
+      - run: python -m pytest -q -m "not model" --junitxml=outputs/ci/pytest.xml
       - name: PR browser smoke without models
         if: matrix.os == 'ubuntu-latest' && github.event_name == 'pull_request'
         shell: bash

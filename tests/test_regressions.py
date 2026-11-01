@@ -1,5 +1,7 @@
 import hashlib
 import io
+import os
+import stat
 import subprocess
 from pathlib import Path
 from types import SimpleNamespace
@@ -73,6 +75,11 @@ def test_model_hash_and_tls_are_verified(tmp_path, monkeypatch):
     utilities.conditional_download(str(tmp_path), ['https://models.example/model.onnx'],
                                   {'model.onnx': hashlib.sha256(payload).hexdigest()})
     assert (tmp_path/'model.onnx').read_bytes() == payload
+    if os.name != 'nt':
+        # A read-only bind mount must be readable by the container's different UID.
+        mode = stat.S_IMODE((tmp_path/'model.onnx').stat().st_mode)
+        assert mode & stat.S_IROTH
+        assert not mode & (stat.S_IWGRP | stat.S_IWOTH)
 
 
 def test_bad_model_hash_is_not_published(tmp_path, monkeypatch):

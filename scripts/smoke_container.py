@@ -120,6 +120,16 @@ def main():
                 break
             time.sleep(1)
         if job["state"] != "complete":
+            # Preserve server diagnostics before the owned container is removed.
+            # This smoke test only submits the bundled public example pair.
+            diagnostic = args.output / "processing.log"
+            subprocess.run(
+                ["docker", "cp", f"{name}:/app/outputs/web/{job['id']}/processing.log", str(diagnostic)],
+                check=False,
+                capture_output=True,
+            )
+            if diagnostic.exists():
+                report["diagnostic"] = diagnostic.name
             raise RuntimeError(job.get("message", "Photo job did not complete"))
         result = requests.get(url + job["result"], timeout=60)
         result.raise_for_status()
