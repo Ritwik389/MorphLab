@@ -44,4 +44,10 @@ The first full-hour browser body passed its progress, cleanup and RSS assertions
 
 ## ADR010: retain a conservative release boundary
 
-The patched Python lock and compiler-free runtime eliminate the reported Python package advisories. Unresolved Debian/FFmpeg dependency findings still fail the container gate. Human review, physical webcam and native Safari remain explicitly pending at the author's request. This is a useful local research candidate with professional assurance practices; a public multi-tenant enterprise release requires additional security, access-control and device evidence.
+The patched Python lock and compiler-free runtime eliminate the reported Python package advisories. At the time of ADR010, unresolved Debian/FFmpeg dependency findings failed the container gate; the later runtime remediation is recorded in ADR011. Human review, physical webcam and native Safari remain explicitly pending at the author's request. This is a useful local research candidate with professional assurance practices; a public multi-tenant enterprise release requires additional security, access-control and device evidence.
+
+## ADR011: remediate the container runtime without relaxing its gate
+
+Trigger: all platform setup defects were repaired, but the deployment scan still rejected the Debian 13 media/OS packages (209 HIGH, one CRITICAL; scan supplied no fixed versions). Chosen: a multi-architecture, digest-pinned Wolfi base, native Python 3.11, and signed FFmpeg 9.0 packages. Preserve the model/Python dependency locks and compile InsightFace against the same NumPy ABI in a separate build stage. Keep the original HIGH/CRITICAL threshold.
+
+The full ARM64 image passes the local scan with zero HIGH/CRITICAL findings, actual CPU model smoke and six real-codec/media regressions. CI repeats these checks on amd64. A zero advisory match is not a universal security claim. OS packages update at build time, so image hashes/inventories are required evidence. Reconsider when Python 3.11 support, Linux wheel compatibility, package availability or the scan/codec/model checks change. [Validation](CONTAINER_VALIDATION.json).

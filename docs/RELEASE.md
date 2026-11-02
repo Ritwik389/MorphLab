@@ -15,7 +15,7 @@ Use `experiments/local-evidence.json` (not committed) to bind each gate to its s
 
 Run `python scripts/assemble_evidence.py` to build bindings from existing measured artefacts. `python scripts/finish_report.py outputs/evaluations/flagship-release` adds the comparison summaries/figures to the release report, and `python scripts/bundle_evidence.py` packages the permitted evidence. The archive excludes raw recordings, private thumbnails, embeddings, model weights and browser traces. Keep the separate local failure traces for debugging.
 
-Human review, native Safari and physical webcam checks are intentionally pending at the author's request. The reviewed/frozen held-out gate and independent-review claims remain incomplete. Unresolved OS-library scan findings independently prevent public-release approval; see SECURITY.md. A green functional suite does not override these release boundaries.
+Human review, native Safari and physical webcam checks are intentionally pending at the author's request. The reviewed/frozen held-out gate and independent-review claims remain incomplete. The historical OS-library scan failure and its replacement runtime evidence are documented in SECURITY.md; a passing current scan does not complete the remaining human or held-out gates. A green functional suite does not override these release boundaries.
 
 ## Physical M4 webcam checklist
 

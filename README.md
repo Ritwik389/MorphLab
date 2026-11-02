@@ -94,7 +94,7 @@ These are **historical pre-rename candidate measurements**, not a fresh certific
 
 MobileFaceSwap was chosen for live throughput; the standard generator offers stronger identity resemblance on tested examples and remains available for exports. Mask variants, detection cadence, geometry, smoothing, and worker/HUD overhead were compared separately rather than combined into an arbitrary score. [Experiment protocol and results](docs/EXPERIMENTS.md).
 
-**Release status: research candidate.** Physical-webcam and native-Safari review, blinded human quality review, and reviewed/frozen held-out tracking evaluation remain **Not Run**. The last container scan failed the high/critical OS-library gate; public deployment is not approved. A passed replay test does not satisfy these missing gates. [Release checklist](docs/RELEASE.md) · [Security scope](docs/SECURITY.md).
+**Release status: research candidate.** Physical-webcam and native-Safari review, blinded human quality review, and reviewed/frozen held-out tracking evaluation remain **Not Run**. The historical Debian container failed its OS-library gate. The replacement Wolfi runtime passes the local HIGH/CRITICAL scan; hosted CI enforces the same gate. Human and held-out acceptance remain incomplete. A passed replay test does not satisfy these missing gates. [Release checklist](docs/RELEASE.md) · [Security scope](docs/SECURITY.md).
 
 ## Queryable codebase
 
@@ -154,6 +154,6 @@ Browser camera tests need Chrome and a fixture: run `.venv/bin/python scripts/bu
 docker compose up --build
 ```
 
-The CPU container serves port **7860**, runs as a non-root user, and binds to host loopback in Compose. Model downloads are verified; weights can instead be mounted read-only. Native MPS/CoreML acceleration is unavailable inside this Linux container. Free CPU hosting can support a photo demo but is not equivalent to the measured local M4 pipeline. Review the failed security gate before public hosting. [Deployment guide](docs/DEPLOYMENT.md).
+The CPU container serves port **7860**, runs as a non-root user, and binds to host loopback in Compose. Model downloads are verified; weights can instead be mounted read-only. Native MPS/CoreML acceleration is unavailable inside this Linux container. Free CPU hosting can support a photo demo but is not equivalent to the measured local M4 pipeline. Review current security evidence and the remaining release gates before public hosting. [Deployment guide](docs/DEPLOYMENT.md).
 
 The desktop app, research CLI and optional legacy Gradio workbench are retained; Gradio is outside the maintained production dependency lock. Launch it with `./scripts/start_local.sh --legacy` only after installing its optional dependencies. Stop/navigation/disconnect clear active camera sessions; export folders expire while the service runs. Disk deletion is not secure erasure.

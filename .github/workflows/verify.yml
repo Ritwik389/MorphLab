@@ -89,6 +89,13 @@ jobs:
           AIMS_CPU_CI: '1'
       - run: docker build --build-arg DOWNLOAD_MODELS=0 -t morphlab-studio:ci .
       - run: python scripts/smoke_container.py --image morphlab-studio:ci --output outputs/ci/container
+      - name: Verify container media codecs
+        run: |
+          python -m pip install --target .cache/container-test-libs pytest==9.2.0
+          docker run --rm --cpus 2 --memory 4g \
+            -e PYTHONPATH=/test-libs \
+            -v "$PWD/.cache/container-test-libs:/test-libs:ro" \
+            morphlab-studio:ci python -m pytest -q tests/test_media_assurance.py
       - name: Production dependency audit
         run: python -m pip_audit -r requirements-web.lock --require-hashes --format json --output outputs/ci/dependency-audit.json
       - name: Container high and critical vulnerability gate

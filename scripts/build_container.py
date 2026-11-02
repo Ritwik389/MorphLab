@@ -84,8 +84,8 @@ def main():
         check=True,
     )
     original = (ROOT / "Dockerfile").read_text()
-    old = "RUN python -m pip install pip==26.2.2 setuptools==84.2.1 wheel==0.48.0 cython==3.3.0 numpy==1.26.4 && python -m pip install --ignore-installed --prefix=/install --no-build-isolation --require-hashes -r requirements-web.lock"
-    new = "COPY --from=wheels / /tmp/wheels/\nRUN python -m pip install --no-index --find-links=/tmp/wheels pip==26.2.2 setuptools==84.2.1 wheel==0.48.0 cython==3.3.0 numpy==1.26.4 && python -m pip install --no-index --find-links=/tmp/wheels --ignore-installed --prefix=/install --no-build-isolation --require-hashes -r requirements-web.lock && rm -rf /tmp/wheels"
+    old = "RUN /opt/venv/bin/python -m pip install --require-hashes --no-deps -r requirements-build.lock && /opt/venv/bin/python -m pip install --no-build-isolation --require-hashes -r requirements-web.lock"
+    new = "COPY --from=wheels / /tmp/wheels/\nRUN /opt/venv/bin/python -m pip install --no-index --find-links=/tmp/wheels --require-hashes --no-deps -r requirements-build.lock && /opt/venv/bin/python -m pip install --no-index --find-links=/tmp/wheels --no-build-isolation --require-hashes -r requirements-web.lock && rm -rf /tmp/wheels"
     if old not in original:
         raise ValueError(
             "Dockerfile dependency stage changed; review the offline builder before use."

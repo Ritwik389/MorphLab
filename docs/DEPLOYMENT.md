@@ -18,7 +18,7 @@ Native CoreML and MobileFaceSwap/MPS run in the local Python process. They are u
 docker compose up --build
 ```
 
-The multi-stage image builds the React frontend, installs hash-locked Python dependencies, downloads and verifies base ONNX models, and runs as a non-root user. Health uses `/api/system`; this checks service readiness without loading the swapper. Actual model readiness is returned separately.
+The multi-stage image builds the React frontend, installs hash-locked Python dependencies, downloads and verifies base ONNX models, and runs as non-root UID 65532. Its runtime uses a digest-pinned Wolfi base with signed Python 3.11 and FFmpeg 9.0 packages; compilers remain in the dependency-build stage. Health uses `/api/system`; this checks service readiness without loading the swapper. Actual model readiness is returned separately.
 
 For a smaller image build followed by a read-only model mount:
 
@@ -37,7 +37,7 @@ The bundle is ready for a Python/container host. Publishing an account-owned end
 
 The host must support HTTP upgrade/WebSockets and HTTPS for browser camera access. Forward `/api/live/*` to the same application with a suitable connection timeout. Static hosting cannot run this inference backend. A free CPU host can demonstrate photos and offline clips; it does not inherit this Mac's GPU or the local live performance result.
 
-Set `AIMS_ALLOWED_HOSTS=your-domain.example` on a public host; the default Host allowlist is for loopback/development. The current OS-library vulnerability gate remains failed, so the built container is a local research deployment candidate, not an approved public upload service.
+Set `AIMS_ALLOWED_HOSTS=your-domain.example` on a public host; the default Host allowlist is for loopback/development. The replacement runtime passes the local HIGH/CRITICAL scan; CI repeats that gate on its actual image. Complete release approval still requires the outstanding human, held-out, access-control and deployment checks.
 
 The app binds to localhost by default; Docker uses 0.0.0.0 internally. The Compose port is restricted to host loopback. Choose access controls and resource limits before making a shared classroom endpoint public. Uploads are limited to 100 MB and videos to 30 seconds/720p. Four exports may be queued, one executes at a time, and live camera connections pause exports between frames. Cancellation remains active while paused. Results and orphaned job folders expire after approximately an hour while the app runs, including folders left by a previous run.
 
@@ -60,3 +60,7 @@ Retain the original source and pretrained model terms when distributing or publi
 For a slow Docker Desktop package network on an Apple Silicon host, `python scripts/build_container.py` downloads hash-checked Linux dependencies through the host and supplies a separate build context. It generates an offline dependency stage from the maintained Dockerfile, builds `morphlab-studio:flagship`, and expects the verified models to be mounted read-only. Use `--arch x86_64` on an x86 Linux Docker host. This helper does not copy research clips or private artifacts into the image.
 
 Verify an image with `python scripts/smoke_container.py --image morphlab-studio:flagship`. The command chooses an unused loopback port, runs a real CPU photo edit under a two-CPU/four-GiB limit, records image/runtime hashes, and removes only its own temporary container. Initial model loading can be slow on CPU; the request timeout is sixty seconds and the complete job deadline is four minutes. Installation uses `scripts/install_runtime.py` to compile InsightFace against the pinned NumPy ABI before the hash-locked production installation.
+
+Container migration evidence is recorded in [CONTAINER_VALIDATION.json](CONTAINER_VALIDATION.json). CI also runs the six existing media regression cases inside the production image, using a temporary read-only pytest harness outside its filesystem. Native Mac launch scripts are unaffected. The base image index digest is pinned for amd64/arm64; signed OS packages resolve at build time, so record the resulting image ID and package inventory rather than claiming byte-identical future rebuilds.
+
+To refresh signed OS packages after a new advisory, rebuild with `docker build --pull --no-cache --build-arg DOWNLOAD_MODELS=0 -t morphlab-studio:local .`, mount the verified models, and repeat smoke/media/security checks. A cached APK layer is not evidence that newly published package fixes were installed.

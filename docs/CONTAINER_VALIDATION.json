@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-02",
+  "scope": "Local Linux ARM64 on Docker Desktop, Apple M4; two CPU/four GiB limits for smoke and media tests. Hosted amd64 CI verifies its own image separately.",
+  "source_tree_sha256": "81e22e0b7f329cb9a7d547fdd0d785e49bae74d408179db9dbb659388b5a48b7",
+  "image_id": "sha256:0f148e0fa62c90712878882b3085e4aa8ce7a3a297563ac66007cddb39bd766b",
+  "base_index_digest": "sha256:88a20e2d017bd20cdc0cb3910de603e7bea9512a6c351a8dd3c9df212ab03d73",
+  "runtime": {
+    "python": "3.11.18",
+    "ffmpeg": "9.0.2-r8",
+    "user": "65532:65532",
+    "os": "Wolfi"
+  },
+  "scan": {
+    "status": "Passed",
+    "scanner": "Trivy 0.76.1",
+    "severity_gate": [
+      "HIGH",
+      "CRITICAL"
+    ],
+    "findings": 0,
+    "report_sha256": "c97524393a86e6adf2d950dc3e6c2fe51a16e2280622029119f8200f76e9f0b7",
+    "suppression_list": false,
+    "ignore_unfixed": false
+  },
+  "actual_cpu_inference": {
+    "status": "Passed",
+    "result_sha256": "0104adcd52e93810f7898cecc97a43112c8512de25f8aea4b059a0910d8b29ef",
+    "result_bytes": 560366,
+    "mean_absolute_pixel_change_0_255": 3.5521104600694446,
+    "session_cleanup": true,
+    "report_sha256": "6f227a49aa7570d9967b7ee1ebd0ca2cc73a89529817449286ac2a2183fb6dbd"
+  },
+  "media_regression": {
+    "status": "Passed",
+    "passed": 6,
+    "scope": "Real FFmpeg/OpenCV codec boundaries, with model inference mocked in this separate suite; includes 90/180/270-degree display rotation, EXIF, short audio, and camera fixture"
+  },
+  "commands": [
+    "python scripts/build_container.py --tag morphlab-studio:wolfi-candidate",
+    "python scripts/smoke_container.py --image morphlab-studio:wolfi-candidate",
+    "trivy image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 IMAGE"
+  ],
+  "limitations": [
+    "Not a Mac GPU or physical camera benchmark",
+    "Not exhaustive bundled-native-code analysis or certification",
+    "OS packages resolve at build time; record actual image and scan versions",
+    "Human and held-out release gates remain incomplete"
+  ]
+}
