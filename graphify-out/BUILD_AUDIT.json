@@ -1,7 +1,8 @@
 {
   "project": "MorphLab",
   "graphify_version": "0.9.95",
-  "created_at": "2026-11-01T17:05:31.916206+00:00",
+  "created_at": "2026-11-03T08:18:32.724955+00:00",
+  "refreshed_on": "2026-11-03",
   "scope": "Authored code and technical documentation",
   "excludes": [
     "graphify-out",
@@ -11,38 +12,51 @@
     "docs/images"
   ],
   "gitignore": true,
-  "detected_files": 158,
-  "total_words": 84204,
+  "detected_files": 161,
+  "total_words": 86244,
   "semantic_files": 25,
-  "semantic_coverage": "All 25 dispatched files read completely; line counts validated",
-  "nodes": 1275,
-  "edges": 3236,
-  "communities": 64,
+  "semantic_refresh": {
+    "cached": 18,
+    "reextracted": 7,
+    "coverage": "Every changed file read completely and line counts validated"
+  },
+  "nodes": 1300,
+  "edges": 3276,
+  "communities": 78,
   "host_agent_usage_available": false,
   "diagnostic_counts": {
-    "raw_edge_count": 3421,
-    "dangling_endpoint_edges": 741,
+    "raw_edge_count": 3463,
+    "dangling_endpoint_edges": 750,
     "missing_endpoint_edges": 0,
     "self_loop_edges": 2,
-    "exact_duplicate_edges": 51,
-    "undirected_same_endpoint_collapsed_edges": 184
+    "exact_duplicate_edges": 53,
+    "undirected_same_endpoint_collapsed_edges": 186
+  },
+  "overview": {
+    "responsibility_groups": 6,
+    "source_mapping": "OVERVIEW.json",
+    "renderer": "scripts/render_code_map.py",
+    "layouts": [
+      "desktop",
+      "mobile"
+    ],
+    "note": "Curated source-reviewed module groups, not algorithmic communities"
   },
   "limitations": [
-    "One TOML file produced no nodes",
-    "22 code/configuration files yielded no symbols",
-    "Unresolved references and collapsed undirected relationships are not a lossless call graph",
+    "23 code/configuration files yielded no symbols",
+    "Dynamic/external references can be unresolved",
+    "Undirected construction can collapse multiple relationships",
     "Semantic links require source verification",
-    "Interactive HTML fetches vis-network from an integrity-pinned CDN; CLI queries work offline"
+    "Interactive HTML loads an integrity-pinned vis-network CDN script; CLI queries work offline"
   ],
   "checked_queries": [
-    "graphify query \"LiveSession tracking source revision\" --budget 1500",
-    "graphify query \"runtime registry MobileRuntime CoreML\" --dfs --budget 1500",
-    "graphify explain LiveSession"
+    "graphify query \"tracking source revision\" --seed modules_studio_live_livesession --budget 1500",
+    "graphify query \"backend model warmup\" --seed modules_runtime_modelregistry --budget 1500"
   ],
   "context_size_estimate": {
-    "naive_tokens": 85000,
-    "average_query_tokens": 1285,
-    "ratio": 66.1,
-    "scope": "Graphify built-in estimate over four generic queries; not measured agent accuracy, speed or cost"
+    "naive_tokens": 86666,
+    "average_query_tokens": 1279,
+    "ratio": 67.8,
+    "scope": "Graphify built-in context estimate over four generic queries; not measured accuracy, latency or agent cost"
   }
 }

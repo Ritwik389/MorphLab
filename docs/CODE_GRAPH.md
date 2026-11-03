@@ -12,8 +12,8 @@ Code is extracted structurally without an API key. Documentation is extracted se
 
 ```bash
 uv tool install graphifyy==0.9.95
-graphify query "LiveSession tracking source revision" --budget 1500
-graphify query "runtime registry MobileRuntime CoreML" --dfs --budget 1500
+graphify query "tracking source revision" --seed modules_studio_live_livesession --budget 1500
+graphify query "backend model warmup" --seed modules_runtime_modelregistry --budget 1500
 graphify explain "LiveSession"
 graphify export html
 ```
@@ -29,3 +29,17 @@ Run commands from the repository root. The committed graph can be queried withou
 ```
 
 Local absolute interpreter/root paths, extraction intermediates, and caches are ignored. Only portable graph outputs and a build audit are published. Refresh the graph when implementation changes; generated edges may collapse into one undirected relationship, so consult the diagnostic report rather than treating the visualisation as a lossless call graph. Host-agent token usage is unavailable in this extraction environment; placeholder zero counters are not a claim of zero token cost.
+
+## README overview
+
+The README uses two self-contained SVGs: a wide map for desktop and a narrow map below a 600-pixel viewport. Both use the existing MorphLab platinum, graphite and cobalt palette, carry accessible title/description text, and require no external fonts or JavaScript. The overview groups files by responsibility; it is not a claim that Graphify generated exactly six communities.
+
+`scripts/render_code_map.py` validates the source coverage of every group against `graphify-out/graph.json`, writes both SVG layouts, and exports their node/file membership to `graphify-out/OVERVIEW.json`. Solid arrows are source-reviewed processing flow; the dashed relationship represents tests/evaluation rather than per-frame traffic. The diagram omits the return path for clarity; edited media returns to Studio.
+
+After refreshing the graph, regenerate the overview with:
+
+```bash
+python scripts/render_code_map.py
+```
+
+Review both layouts at desktop and mobile widths before publishing. The full interactive graph remains a local HTML download and the CLI remains available for deeper exploration. Graphify extraction can leave dynamic references unresolved or combine same-endpoint edges; the audit records these limitations.

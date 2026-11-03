@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="740" viewBox="0 0 1120 740" role="img" aria-labelledby="title description">
+<title id="title">MorphLab architecture: six connected parts</title>
+<desc id="description">Studio sends media to the API. Live processing and offline export jobs use the model runtimes. Verification checks the pipeline. Solid arrows show processing; the dashed line shows a test relationship. Edited results return to Studio. This is a curated overview, not the complete dependency graph.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#244ce8"/></marker></defs>
+<rect width="1120" height="740" rx="20" fill="#f5f6f8"/>
+<text x="48" y="62" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#1f242c">MorphLab architecture</text>
+<text x="48" y="98" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#525c6b">Capture, process, and inspect an edit — with verification around the pipeline.</text>
+<path d="M286 273 H348" fill="none" stroke="#244ce8" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M618 242 H648 V211 H680" fill="none" stroke="#244ce8" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M618 305 H648 V395 H680" fill="none" stroke="#244ce8" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1050 211 H1080 V598 H1050" fill="none" stroke="#244ce8" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M865 464 V520" fill="none" stroke="#244ce8" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M286 598 H348" fill="none" stroke="#525c6b" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6 6"/>
+<g id="studio"><rect x="48" y="204" width="238" height="138" rx="16" fill="#ffffff" stroke="#dde1e8"/>
+<rect x="70" y="223" width="24" height="3" rx="1.5" fill="#244ce8"/>
+<text x="70" y="256" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#1f242c">Studio</text>
+<text x="70" y="282" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#525c6b">Camera · photos · video</text>
+<text x="70" y="324" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="400" fill="#525c6b">frontend/src/</text>
+</g>
+<g id="api"><rect x="348" y="204" width="270" height="138" rx="16" fill="#ffffff" stroke="#dde1e8"/>
+<rect x="370" y="223" width="24" height="3" rx="1.5" fill="#244ce8"/>
+<text x="370" y="256" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#1f242c">API &amp; sessions</text>
+<text x="370" y="282" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#525c6b">HTTP + binary WebSocket</text>
+<text x="370" y="324" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="400" fill="#525c6b">studio_api.py</text>
+</g>
+<g id="live"><rect x="680" y="142" width="370" height="138" rx="16" fill="#ffffff" stroke="#dde1e8"/>
+<rect x="702" y="161" width="24" height="3" rx="1.5" fill="#244ce8"/>
+<text x="702" y="194" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#1f242c">Live processing</text>
+<text x="702" y="220" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#525c6b">Latest-frame queue · face tracking</text>
+<text x="702" y="262" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="400" fill="#525c6b">studio_live.py · temporal.py</text>
+</g>
+<g id="exports"><rect x="680" y="326" width="370" height="138" rx="16" fill="#ffffff" stroke="#dde1e8"/>
+<rect x="702" y="345" width="24" height="3" rx="1.5" fill="#244ce8"/>
+<text x="702" y="378" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#1f242c">Photo &amp; video exports</text>
+<text x="702" y="404" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#525c6b">Cancellable jobs · live gets priority</text>
+<text x="702" y="446" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="400" fill="#525c6b">studio_jobs.py</text>
+</g>
+<g id="models"><rect x="348" y="520" width="702" height="156" rx="16" fill="#ffffff" stroke="#dde1e8"/>
+<rect x="370" y="539" width="24" height="3" rx="1.5" fill="#244ce8"/>
+<text x="370" y="572" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#1f242c">Model runtimes</text>
+<text x="370" y="598" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#525c6b">Live: MobileFaceSwap / MPS</text>
+<text x="370" y="622" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#525c6b">Exports: INSwapper / CoreML or CPU</text>
+<text x="370" y="658" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16" font-weight="400" fill="#525c6b">runtime.py · mobile_model.py</text>
+</g>
+<g id="checks"><rect x="48" y="520" width="238" height="156" rx="16" fill="#ffffff" stroke="#dde1e8"/>
+<rect x="70" y="539" width="24" height="3" rx="1.5" fill="#244ce8"/>
+<text x="70" y="572" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#1f242c">Verification</text>
+<text x="70" y="598" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#525c6b">Tests + benchmarks</text>
+<text x="70" y="658" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="14" font-weight="400" fill="#525c6b">tests/ · scripts/ · CI</text>
+</g>
+<text x="48" y="716" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#525c6b">Solid arrows: processing flow. Dashed line: verification. Edited media returns to Studio.</text>
+</svg>

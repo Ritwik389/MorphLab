@@ -50,20 +50,16 @@ The Windows setup path and CI definitions are included; a completed Windows hard
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    UI[React Studio] --> W[Media worker / browser fallback]
-    W -->|Binary WebSocket: IDs, timestamps, revisions| Q[Latest-frame scheduler]
-    Q --> T[Detection + identity-aware tracking]
-    T --> R[Immutable runtime registry]
-    R --> M[MobileFaceSwap / MPS]
-    R --> C[INSwapper / CoreML or ONNX Runtime]
-    M --> B[Alignment + boundary compositing]
-    C --> B
-    B -->|Encoded result + measured stages| UI
-    UI -->|HTTP| J[Cancellable photo / video jobs]
-    J --> R
-```
+The map below follows an edit from the browser to the model runtime. Live processing and offline exports share inference capacity; verification checks their behaviour.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/images/morphlab-code-map-mobile.svg">
+  <img src="docs/images/morphlab-code-map.svg" alt="MorphLab architecture: Studio sends media to the API; Live and Export processing use model runtimes, with a separate verification relationship." width="1120">
+</picture>
+
+[Open full-size map](docs/images/morphlab-code-map.svg) · [Explore the complete code graph](#queryable-codebase)
+
+*Six curated responsibility groups, backed by Graphify source nodes and reviewed processing paths. Dashed connections represent verification.*
 
 One frame executes while at most one newer frame waits; new arrivals replace stale pending work. Source and selection revisions prevent old results from being displayed after changes. Canvas rendering avoids a React state update per video frame. Session-local tracking combines appearance association, optical flow, periodic detection, and current-frame 106-point geometry.
 
@@ -98,21 +94,23 @@ MobileFaceSwap was chosen for live throughput; the standard generator offers str
 
 ## Queryable codebase
 
-The repository includes a **Graphify knowledge graph** covering authored code and technical documentation. Generated outputs, model/data caches, images, translations, and vendored third-party implementations are excluded from this map. Code relationships come from structural extraction; documentation relationships are marked extracted, inferred, or ambiguous. The graph assists navigation and does not replace reading source or running tests.
+The overview above highlights six responsibilities. The complete **Graphify knowledge graph** lets you inspect individual modules, dependencies, and their source locations. It covers authored code and technical documentation; model/data caches, generated images, translations, and vendored implementations are excluded.
 
-- [Interactive graph](graphify-out/graph.html): download/open locally; GitHub does not execute HTML previews.
-- [Architecture and graph audit](graphify-out/GRAPH_REPORT.md).
-- [Portable graph JSON](graphify-out/graph.json) for CLI queries and integrations.
-- [Scope, reproducibility, and limitations](docs/CODE_GRAPH.md).
+- **Browse visually:** [download the interactive graph](graphify-out/graph.html) and open it locally. GitHub displays HTML source rather than running it.
+- **Inspect the evidence:** [graph audit](graphify-out/GRAPH_REPORT.md), [build scope](graphify-out/BUILD_AUDIT.json), and [overview-to-source mapping](graphify-out/OVERVIEW.json).
+- **Query locally:** use the committed [graph JSON](graphify-out/graph.json), without loading models or supplying an API key.
 
 ```bash
 uv tool install graphifyy==0.9.95
-graphify query "LiveSession tracking source revision" --budget 1500
-graphify query "runtime registry MobileRuntime CoreML" --dfs --budget 1500
-graphify explain "LiveSession"
+
+# How does a live session handle tracking and source changes?
+graphify query "tracking source revision" --seed modules_studio_live_livesession --budget 1500
+
+# Where are inference backends selected and prepared?
+graphify query "backend model warmup" --seed modules_runtime_modelregistry --budget 1500
 ```
 
-Queries use the committed graph locally and require no API key. After code changes, run `graphify update .` to refresh structural relationships. Refresh documentation semantics with the Graphify skill in a supported coding agent; no embedding database is required. See the graph guide for checked queries and extraction diagnostics.
+The full graph preserves structural and semantic provenance; inferred relationships are labelled. Its queries return source context, so verify the linked implementation before drawing conclusions. Refresh structural code with `graphify update .` and documentation semantics with the Graphify skill. [Refresh and rendering instructions](docs/CODE_GRAPH.md).
 
 ## Testing and release assurance
 
